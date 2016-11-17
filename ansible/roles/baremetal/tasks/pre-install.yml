@@ -126,7 +126,7 @@
     recurse: yes
     owner: kolla
     group: kolla
-    mode: 755
+    mode: 0755
   become: True
   when: create_kolla_user | bool == True
 
@@ -135,6 +135,6 @@
     path: /etc/kolla
     state: directory
     recurse: yes
-    mode: 666
+    mode: 0666
   become: True
   when: create_kolla_user | bool == False
