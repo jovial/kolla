@@ -9,6 +9,8 @@ function find_base_dir {
         BASEDIR=/usr/share/kolla
     elif [[ ${dir_name} == "/usr/local/bin" ]]; then
         BASEDIR=/usr/local/share/kolla
+    elif [[ -n ${VIRTUAL_ENV} ]] && [[ ${dir_name} == "${VIRTUAL_ENV}/bin" ]]; then
+        BASEDIR="${VIRTUAL_ENV}/share/kolla"
     else
         BASEDIR="$(dirname ${dir_name})"
     fi
