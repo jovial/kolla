@@ -15,6 +15,9 @@ localhost       ansible_connection=local
 [monitoring]
 localhost       ansible_connection=local
 
+[seed]
+localhost       ansible_connection=local
+
 # You can explicitly specify which hosts run each project by updating the
 # groups in the sections below. Common services are grouped together.
 [collectd:children]
@@ -385,3 +388,7 @@ senlin
 
 [senlin-engine:children]
 senlin
+
+# Bifrost
+[bifrost:children]
+seed

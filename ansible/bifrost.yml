@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: bifrost
   roles:
     - { role: bifrost,
         tags: bifrost}

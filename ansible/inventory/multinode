@@ -27,6 +27,9 @@ monitoring01
 [storage]
 storage01
 
+[seed]
+localhost    ansible_connection=local
+
 [baremetal:children]
 control
 network
@@ -401,3 +404,7 @@ senlin
 
 [senlin-engine:children]
 senlin
+
+# Bifrost
+[bifrost:children]
+seed
