@@ -3,3 +3,12 @@ skip_bootstrap: true
 skip_start: true
 install_dib: true
 create_image_via_dib: false
+ironicclient_git_branch: stable/ocata
+ironic_git_branch: stable/ocata
+shade_git_branch: 1.16.0
+dib_git_branch: 1.28.0
+ironicinspector_git_branch: stable/ocata
+ironicinspectorclient_git_branch: stable/ocata
+reqs_git_branch: stable/ocata
+staging_drivers_git_branch: stable/ocata
+keystone_git_branch: stable/ocata
