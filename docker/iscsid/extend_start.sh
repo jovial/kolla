@@ -1,5 +1,7 @@
 #!/bin/bash
 
+modprobe iscsi_tcp
+
 # check if unique iSCSI initiator name already exists
 if [[ ! -f /etc/iscsi/initiatorname.iscsi ]]; then
     echo "Generating new iSCSI initiator name"
