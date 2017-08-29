@@ -96,6 +96,7 @@ STATUS_ERRORS = (STATUS_CONNECTION_ERROR, STATUS_PUSH_ERROR,
 
 SKIPPED_IMAGES = {
     'centos+binary': [
+        "almanach-base",
         "bifrost-base",
         "blazar-base",
         "dragonflow-base",
@@ -118,6 +119,7 @@ SKIPPED_IMAGES = {
         "ovsdpdk",
     ],
     'ubuntu+binary': [
+        "almanach-base",
         "bifrost-base",
         "blazar-base",
         "cloudkitty-base",
@@ -147,6 +149,7 @@ SKIPPED_IMAGES = {
         "tripleo-ui"
     ],
     'debian+binary': [
+        "almanach-base",
         "bifrost-base",
         "blazar-base",
         "cloudkitty-base",
@@ -178,6 +181,7 @@ SKIPPED_IMAGES = {
         "tripleo-ui"
     ],
     'oraclelinux+binary': [
+        "almanach-base",
         "bifrost-base",
         "blazar-base",
         "dragonflow-base",
