@@ -19,3 +19,6 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 {% block xtrabackup_footer %}{% endblock %}
 {% block footer %}{% endblock %}
+
+VOLUME /backup
+ENTRYPOINT ["xtrabackup", "--target-dir=/backup"]
