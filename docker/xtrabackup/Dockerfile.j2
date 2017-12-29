@@ -6,19 +6,17 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 {% import "macros.j2" as macros with context %}
 
 {% if base_distro in ['centos', 'oraclelinux', 'rhel', 'ubuntu', 'debian'] %}
-    {% set xtrabackup_packages = [
-        'percona-xtrabackup',
-        'rsync',
-        'socat',
-        'tar'
-    ] %}
-
+    {% set xtrabackup_packages = ['percona-xtrabackup'] %}
 {% endif %}
 
 {{ macros.install_packages(xtrabackup_packages | customizable("packages")) }}
 
 {% block xtrabackup_footer %}{% endblock %}
+
 {% block footer %}{% endblock %}
 
 VOLUME /backup
-ENTRYPOINT ["xtrabackup", "--target-dir=/backup"]
+
+CMD xtrabackup --backup --target-dir=/backup && \
+    xtrabackup --prepare --target-dir=/backup && \
+    xtrabackup --prepare --target-dir=/backup
