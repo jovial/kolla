@@ -9,15 +9,26 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 {% if base_distro in ['centos', 'oraclelinux', 'rhel'] %}
     {% set zookeeper_packages = [
-        'zookeeper',
+        'java-1.8.0-openjdk',
     ] %}
 {% elif base_distro in ['debian', 'ubuntu'] %}
     {% set zookeeper_packages = [
-        'zookeeper',
+        'default-jre',
     ] %}
 {% endif %}
 
 {{ macros.install_packages(zookeeper_packages | customizable("packages")) }}
+
+{% block zookeeper_version %}
+ENV zookeeper_version=3.4.10
+{% endblock %}
+
+{% block zookeeper_binary_install %}
+RUN curl -sSL -o /tmp/zookeeper.tar.gz http://apache.mirror.anlx.net/zookeeper/stable/zookeeper-${zookeeper_version}.tar.gz \
+    && tar xvf /tmp/zookeeper.tar.gz -C /opt/ \
+    && rm -f /tmp/zookeeper.tar.gz \
+    && ln -s /opt/zookeeper* /opt/zookeeper
+{% endblock %}
 
 COPY extend_start.sh /usr/local/bin/kolla_extend_start
 RUN chmod 755 /usr/local/bin/kolla_extend_start
