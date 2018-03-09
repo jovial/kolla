@@ -17,6 +17,7 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 VOLUME /backup
 
-CMD xtrabackup --backup --target-dir=/backup && \
-    xtrabackup --prepare --target-dir=/backup && \
-    xtrabackup --prepare --target-dir=/backup
+COPY backup.sh /usr/local/bin/kolla_backup_mariadb.sh
+
+CMD chmod 755 /usr/local/bin/kolla_backup_mariadb.sh && \
+    /usr/local/bin/kolla_backup_mariadb.sh
