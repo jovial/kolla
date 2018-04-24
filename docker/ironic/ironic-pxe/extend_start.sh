@@ -22,6 +22,7 @@ function bootstrap_ipxe() {
         cp /usr/share/ipxe/{undionly.kpxe,ipxe.efi} /tftpboot
         sed -i '/Listen 80/s/^#//g' /etc/httpd/conf/httpd.conf
     fi
+    exit 0
 }
 
 # Bootstrap and exit if KOLLA_BOOTSTRAP variable is set. This catches all cases
