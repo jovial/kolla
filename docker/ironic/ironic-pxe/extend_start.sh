@@ -16,11 +16,8 @@ function bootstrap_pxe() {
 function bootstrap_ipxe() {
     if [[ "${KOLLA_BASE_DISTRO}" =~ debian|ubuntu ]]; then
         cp /usr/lib/ipxe/{undionly.kpxe,ipxe.efi} /tftpboot
-        echo "NameVirtualHost *:80" > /etc/apache2/ports.conf
-        echo "Listen 80" >> /etc/apache2/ports.conf
     elif [[ "${KOLLA_BASE_DISTRO}" =~ centos|oraclelinux|rhel ]]; then
         cp /usr/share/ipxe/{undionly.kpxe,ipxe.efi} /tftpboot
-        sed -i '/Listen 80/s/^#//g' /etc/httpd/conf/httpd.conf
     fi
     exit 0
 }
